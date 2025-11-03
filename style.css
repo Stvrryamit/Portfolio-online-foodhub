@@ -1,0 +1,82 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #fffdf5;
+  color: #333;
+}
+
+header {
+  background: #ff6347;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+}
+
+header nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+header nav a.active {
+  font-weight: bold;
+  border-bottom: 2px solid white;
+}
+
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background: url('../images/banner.jpg') center/cover no-repeat;
+  color: white;
+}
+
+.btn {
+  background: #ff6347;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  padding: 20px;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+form input, form select, form textarea {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+footer {
+  text-align: center;
+  background: #222;
+  color: white;
+  padding: 15px;
+}
