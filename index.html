@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TastyBites Restaurant Menu</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fffaf5;
+      color: #333;
+    }
+    header {
+      background-color: #ff7b00;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 2rem;
+      position: relative;
+    }
+    .cart-btn {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      background: #222;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .menu-section {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    h2 {
+      text-align: center;
+      color: #ff7b00;
+      margin-bottom: 1rem;
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .menu-item {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .menu-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .menu-info {
+      padding: 1rem;
+    }
+    .menu-info h3 {
+      margin-bottom: 0.5rem;
+    }
+    .price {
+      color: #ff7b00;
+      font-weight: bold;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #222;
+      color: white;
+      font-size: 0.9rem;
+    }
+    .btn:hover {
+      background-color: #333;
+    }
+
+    /* Cart Modal */
+    .cart-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    .cart-content {
+      background: white;
+      width: 90%;
+      max-width: 400px;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .cart-content h3 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .cart-items {
+      max-height: 300px;
+      overflow-y: auto;
+      margin-bottom: 1rem;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .cart-item button {
+      background: red;
+      color: white;
+      border: none;
+      padding: 0.2rem 0.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .cart-footer {
+      text-align: center;
+    }
+    .checkout-btn {
+      background: #ff7b00;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    TastyBites Restaurant Menu 🍴
+    <button class="cart-btn" id="viewCartBtn">🛒 View Cart</button>
+  </header>
+
+  <!-- Menu -->
+  <section class="menu-section">
+    <h2>Starters</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="https://www.thecookingcollective.com.au/wp-content/uploads/2022/08/Vegetable-Spring-Rolls-2-1.jpg" alt="">
+        <div class="menu-info">
+          <h3>Veg Spring Rolls</h3>
+          <p>Crispy rolls stuffed with mixed veggies.</p>
+          <div class="price">₹120</div>
+          <button class="btn add-cart" data-name="Veg Spring Rolls" data-price="120">Add to Cart</button>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.LXw4MXe67_G5qbKOfeDSLQHaFj?rs=1&pid=ImgDetMain&o=7&rm=3.jpg" alt="">
+        <div class="menu-info">
+          <h3>Sweet Corn Soup</h3>
+          <p>Warm and comforting corn soup.</p>
+          <div class="price">₹100</div>
+          <button class="btn add-cart" data-name="Sweet Corn Soup" data-price="100">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-section">
+    <h2>Main Course</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="https://img.freepik.com/premium-photo/delicious-paneer-butter-masala-photography_928503-851.jpg" alt="">
+        <div class="menu-info">
+          <h3>Paneer Butter Masala</h3>
+          <p>Soft paneer in buttery tomato gravy.</p>
+          <div class="price">₹220</div>
+          <button class="btn add-cart" data-name="Paneer Butter Masala" data-price="220">Add to Cart</button>
+        </div>
+      </div>
+      <div class="menu-item">
+        <img src="https://static.vecteezy.com/system/resources/previews/040/703/949/non_2x/ai-generated-royal-feast-master-the-art-of-chicken-biryani-at-home-generative-ai-photo.jpg" alt="">
+        <div class="menu-info">
+          <h3>Chicken Biryani</h3>
+          <p>Fragrant rice cooked with chicken and spices.</p>
+          <div class="price">₹250</div>
+          <button class="btn add-cart" data-name="Chicken Biryani" data-price="250">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cart Modal -->
+  <div class="cart-modal" id="cartModal">
+    <div class="cart-content">
+      <h3>Your Cart</h3>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-footer">
+        <p id="totalAmount">Total: ₹0</p>
+        <button class="checkout-btn" id="checkoutBtn">Proceed to Payment</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const cart = [];
+    const addCartButtons = document.querySelectorAll('.add-cart');
+    const viewCartBtn = document.getElementById('viewCartBtn');
+    const cartModal = document.getElementById('cartModal');
+    const cartItemsDiv = document.getElementById('cartItems');
+    const totalAmount = document.getElementById('totalAmount');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+
+    addCartButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name = btn.dataset.name;
+        const price = parseInt(btn.dataset.price);
+        cart.push({ name, price });
+        alert(`${name} added to cart!`);
+      });
+    });
+
+    viewCartBtn.addEventListener('click', () => {
+      cartModal.style.display = 'flex';
+      renderCart();
+    });
+
+    function renderCart() {
+      cartItemsDiv.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, index) => {
+        total += item.price;
+        const div = document.createElement('div');
+        div.classList.add('cart-item');
+        div.innerHTML = `
+          <span>${item.name} - ₹${item.price}</span>
+          <button onclick="removeItem(${index})">X</button>
+        `;
+        cartItemsDiv.appendChild(div);
+      });
+      totalAmount.textContent = `Total: ₹${total}`;
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    window.removeItem = removeItem;
+
+    checkoutBtn.addEventListener('click', () => {
+      localStorage.setItem('cartTotal', totalAmount.textContent);
+      window.location.href = 'payment.html';
+    });
+
+    cartModal.addEventListener('click', (e) => {
+      if (e.target === cartModal) cartModal.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
